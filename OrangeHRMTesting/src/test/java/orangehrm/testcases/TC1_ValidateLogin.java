@@ -12,16 +12,16 @@ public class TC1_ValidateLogin extends DriverClass{
 	@Test
 	public void longintest() {
 		
-		launcbroswer("chrome");
-		enterurl("https://opensource-demo.orangehrmlive.com/");
+		launcbroswer(prop.getProperty("browser"));
+		enterurl(prop.getProperty("url"));
 		
 		LoginPage login = new LoginPage(driver);
 		
-		login.login("Admin", "admin123");
+		login.login(prop.getProperty("username"), prop.getProperty("password"));
 		
 		String url =  driver.getCurrentUrl();
 		
-		Assert.assertEquals("https://opensource-demo.orangehrmlive.com/index.php/dashboard", url);
+		Assert.assertEquals(prop.getProperty("homepageurl"), url);
 	
 		teardown();
 		
